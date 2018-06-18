@@ -68,7 +68,7 @@ hanzi:
 star:
 	add di,307
 	mov si,1
-	ret
+	ret   ;1234567
 	
 	
 	
