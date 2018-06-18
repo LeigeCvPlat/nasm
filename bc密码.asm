@@ -15,7 +15,7 @@ first db '1111111111111'
 ;/***************************************************************************/
 keike:
 
-	mov ax,0xb800      ;ָ���ı�ģʽ����ʾ������  80X25
+	mov ax,0xb800      ;指向文本模式的显示缓存区  80X25
 	mov es,ax
 
 	mov ax,0x00
@@ -36,14 +36,14 @@ keike:
 
 
 hanzi:
-	mov AL,0x13			;VGA320(��)x200x8bit��ʾģʽ  �Կ�������ģ�� �����ַ����Ӧ��ģ���ַ
-	mov AH,0x00			;ͼ��ģʽ
+	mov AL,0x13			;VGA320(列)x200x8bit显示模式  显卡里有字模库 输入字符会对应字模库地址
+	mov AH,0x00			;图形模式
 	INT 0x10
 	
 	mov si,0000
 	mov di,6140
-	mov ax,0x0a000      ;���Դ棨0x0a0000��ʼ���з��������
-	mov es,ax			;cs(����εĶε�ַ)�����ã�ds/es/ss����
+	mov ax,0x0a000      ;往显存（0x0a0000开始）中放入点数据
+	mov es,ax			;cs(代码段的段地址)不能用，ds/es/ss可用
 	
 	mov ax,0x00 ;+6140
 	mov ds,ax
